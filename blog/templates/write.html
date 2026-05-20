@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{% static 'write.css' %}" />
+  <title>Write - Inkverge</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <a href="{% url 'index' %}">
+        <img class="logo" src="{% static 'image/logo-2.png' %}" alt="Inkverge Logo" />
+      </a>
+    </div>
+    <div class="header-right">
+      <button type="button" id="publishBtn" class="publish">Publish</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <form id="writeForm" action="{% url 'write' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="editor-container">
+      <input type="text" name="title" class="post-title" placeholder="Title" required />
+      <input type="text" name="subtitle" class="post-title" placeholder="Subtitle" required />
+      <img id="myImg" class="browse" />
+    </div>
+    <div class="brow">
+      <div class="left">
+        <label id="imgg" for="myfile" class="file-upload">
+          <i class="fa-solid fa-image"></i>
+          <input type="file" id="myfile" name="image" required />
+        </label>
+      </div>
+      <textarea name="description" class="post-body" placeholder="Tell your story..." required></textarea>
+    </div>
+  </form>
+  </div>
+
+  <script>
+    myfile.onchange = () => {
+      let file = myfile.files[0];
+      if (file) {
+        myImg.src = URL.createObjectURL(file);
+        myImg.style.display = "block";
+        myfile.style.display = "none";
+        imgg.style.visibility = "hidden";
+      }
+    };
+
+    const publishBtn = document.getElementById("publishBtn");
+    const writeForm = document.getElementById("writeForm");
+
+    publishBtn.addEventListener("click", () => {
+      writeForm.submit();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'membership.css' %}">
+    <title>Inkverge Membership</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-left">
+      <a href="{% url 'index' %}"><img class="logo" src="{% static 'image/logo-2.png' %}" alt="Inkverge Logo"></a>
+    </div>
+  </div>
+
+
+  <div class="main">
+
+    <div class="content">
+        <div class="head">
+            <h1>
+                Support great writing access every story on Inkverge
+            </h1>
+        </div>
+    </div>
+
+    <div class="membership">
+        <div class="memb">
+            <div class="user-pic">
+                <div class="pic-wrapper">
+                    {% if profile.image %}
+                      <img src="{{ profile.image.url }}" alt="{{ user.username }}">
+                    {% else %}
+                      <img src="{% static 'user_img/default.png' %}" alt="No photo">
+                    {% endif %}
+                    <div class="badge">
+                    <i class="fas fa-star"></i>
+                    </div>
+                </div>    
+            </div>
+
+            <div class="title">
+                <h2>Member</h2>
+                <p class="price"><span class="strike">₹999</span> ₹499 INR/year</p>
+                <p class="desc">Access every story and enjoy unlimited publishing with an enhanced reading experience. Cancel anytime.</p>
+            </div>
+
+            <div class="select-btn">
+                <a href="{% url 'payment' %}">
+                    <button>Select</button>
+                </a>        
+            </div>
+
+            <div class="benefits">
+                <ul>
+                    <li><i class="fas fa-book-open"></i> Read member-only stories</li>
+                    <li><i class="fas fa-heart"></i> Support your favorite writers</li>
+                    <li><i class="fas fa-pen-nib"></i> Publish your own blogs</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

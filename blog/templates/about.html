@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+    <title>Inkverge</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-left">
+      <a href="{% url 'index' %}"><img class="logo" src="{% static 'image/logo-2.png' %}" alt="Inkverge Logo"></a>
+    </div>
+  </div>
+
+
+  <div class="main">
+
+     <div class="about-container">
+    <div class="intro-section">
+      <h1>About Inkverge</h1>
+      <p>Inkverge is a platform where stories come to life. We believe everyone has a story to tell, and we’re here to provide a space where writers, thinkers, and creators can share their ideas with the world.</p>
+      <p>Founded with a passion for storytelling, Inkverge empowers individuals to express themselves through words, images, and ideas. Whether you’re a seasoned writer or just starting out, our community welcomes you to explore, create, and connect.</p>
+    </div>
+
+    <div class="mission-section">
+      <h2>Our Mission</h2>
+      <p>Our mission is to foster a vibrant community of storytellers. We aim to make publishing simple, accessible, and impactful, allowing voices from all walks of life to be heard. From personal essays to thought-provoking articles, Inkverge is where ideas find their audience.</p>
+    </div>
+
+    <div class="features-section">
+      <h2>Why Inkverge?</h2>
+      <ul>
+        <li><strong>A Space for Everyone:</strong> Whether you’re writing about travel, technology, or life’s little moments, there’s a place for your story.</li>
+        <li><strong>Simple and Beautiful Design:</strong> Our clean, distraction-free editor lets you focus on what matters—your words.</li>
+        <li><strong>Community-Driven:</strong> Follow writers, engage with their stories, and build connections through comments and likes.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  </div>
+
+</body>
+
+</html>

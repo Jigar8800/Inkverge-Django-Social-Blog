@@ -1,0 +1,442 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+    padding: 10px 20px;
+    top: 0;
+    z-index: 100;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left a {
+      font-size: 24px;
+      color: #6B6B6B;
+      text-decoration: none;
+    }
+
+    .nav-left a {
+      font-size: 14px;
+      color: #6B6B6B;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+
+.content{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.head{
+    padding: 10px 0 10px 20px;
+    margin-left:10%;
+}
+
+.head h1{
+    display: block;
+    width: 70%;
+    color: #000000;
+    text-align: center;
+    font-family:gt-super, Georgia, Cambria, "Times New Roman", Times, serif;;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 1px;
+}
+
+
+.membership{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.memb {
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 35px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.pic-wrapper img{
+    width: 90px;
+    height:90px;
+    border-radius: 50%;
+}
+
+.pic-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #fff; 
+  color: #FFD700; 
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.title h2 {
+  font-size: 24px;
+  margin-top: 15px;
+  color: #222;
+  line-height: 1.6;
+}
+
+.price {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #222;
+  line-height: 1.6;
+}
+
+.price .strike {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 8px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.select-btn {
+  margin-bottom: 20px;
+}
+
+.select-btn button {
+  background-color: #1a8917;
+  color: #fff;
+  border: none;
+  padding: 12px 40px;
+  font-size: 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.select-btn button:hover {
+  background-color: #166f13;
+}
+
+.benefits {
+  text-align: left;
+}
+
+.benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.benefits li i {
+  color: #1a8917;
+  margin-right: 10px;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .nav {
+    padding: 8px 10px;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+.content{
+  margin-bottom: 10px;
+}
+
+.head{
+  padding: 0;
+  margin-left:0%;
+  display: flex;
+  justify-content: center;
+}
+
+.head h1{
+  width: 80%;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.membership{
+  margin-top: 10px;
+  padding: 20px;
+  max-width: 95%;
+}
+
+ .pic-wrapper img {
+    width: 65px;
+    height: 65px;
+  }
+
+ .badge {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .title h2 {
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .desc {
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  .select-btn button {
+    font-size: 14px;
+    padding: 10px 25px;
+  }
+
+  .benefits li {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .benefits li i {
+    font-size: 13px;
+  }
+
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .nav {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .head{
+  padding: 0;
+  margin-left:0%;
+  display: flex;
+  justify-content: center;
+}
+
+  .head h1 {
+    font-size: 24px;
+    line-height: 32px;
+    width: 80%;
+  }
+
+  .membership {
+    margin-top: 0px;
+    padding: 28px;
+    max-width: 90%;
+  }
+
+  .pic-wrapper img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .badge {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  .title h2 {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .desc {
+    font-size: 13.5px;
+  }
+
+  .select-btn button {
+    font-size: 15px;
+    padding: 10px 30px;
+  }
+
+  .benefits li {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .nav {
+    padding: 14px 30px;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+    .head{
+  padding: 0;
+  margin-left:0%;
+  display: flex;
+  justify-content: center;
+}
+
+  .head h1 {
+    font-size: 26px;
+    line-height: 34px;
+    width: 80%;
+  }
+
+  .membership {
+    margin-top: 0;
+    padding: 32px;
+    max-width: 88%;
+  }
+
+  .pic-wrapper img {
+    width: 85px;
+    height: 85px;
+  }
+
+  .badge {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .title h2 {
+    font-size: 22px;
+  }
+
+  .price {
+    font-size: 17px;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+
+  .select-btn button {
+    font-size: 16px;
+    padding: 12px 34px;
+  }
+
+  .benefits li {
+    font-size: 14.5px;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  
+  .head{
+  padding: 0;
+  margin-left:0%;
+  display: flex;
+  justify-content: center;
+}
+  
+  .head h1 {
+    font-size: 28px;
+    line-height: 36px;
+    width: 80%;
+  }
+
+  .membership {
+    margin-top: 0;
+    padding: 35px;
+    max-width: 100%;
+  }
+
+  .pic-wrapper img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .badge {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .title h2 {
+    font-size: 24px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .desc {
+    font-size: 15px;
+  }
+
+  .select-btn button {
+    font-size: 16px;
+    padding: 14px 38px;
+  }
+
+  .benefits li {
+    font-size: 15px;
+  }
+}

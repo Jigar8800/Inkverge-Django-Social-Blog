@@ -1,0 +1,337 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'post_detail.css' %}">
+    <title>Inkverge</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-left">
+      <a href="{% url 'index' %}"><img class="logo" src="{% static 'image/logo-2.png' %}" alt="Inkverge Logo"></a>
+      <div class="search">
+        <form method="get" action="{% url 'index' %}">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="ss" name="q" placeholder="Search by title" value="{{ query }}">
+        </form>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="{% url 'write' %}" class="hide"><i class="fa-solid fa-pen-to-square"></i><span class="wr">Write</span></a>
+      <div class="notify">
+        <a href="{% url 'notifications' %}" class="hide">
+        <i class="fa fa-bell"></i>
+        {% if unread_notifications > 0 %}
+          <span class="notification-count">{{ unread_notifications }}</span>
+        {% endif %}
+      </a>
+      </div>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}" class="hide">Sign Out</a>
+      {% else %}
+        <a href="{% url 'login_register' %}" class="hide">Sign in</a>
+      {% endif %}
+      <a href="{% url 'profile' %}" class="nav-profile">
+        <div class="profile-badge">
+          {% if my_profile.image %}
+            <img src="{{ my_profile.image.url }}" alt="{{ user.username }}">
+          {% else %}
+            <img src="{% static 'user_img/default.png' %}" alt="No photo">
+          {% endif %}
+          {% if my_profile.is_member %}
+            <div class="badge"><i id="star1" class="fas fa-star"></i></div>
+          {% endif %}
+        </div>
+      </a>
+    </div>
+
+    <div class="mobile-dropdown">
+    <ul>
+      <li>
+        <a href="{% url 'profile' %}" id="phone" class="nav-profile">
+        <div class="profile-badge">
+          {% if my_profile.image %}
+            <img src="{{ my_profile.image.url }}" alt="{{ user.username }}">
+          {% else %}
+            <img src="{% static 'user_img/default.png' %}" alt="No photo">
+          {% endif %}
+          {% if my_profile.is_member %}
+            <div class="badge"><i id="star" class="fas fa-star"></i></div>
+          {% endif %}
+        </div>
+        </a>
+        </li>
+        <li><a href="{% url 'help' %}">Help</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        {% if my_profile and not my_profile.is_member %}
+          <li><a href="{% url 'membership' %}">Become a Member</a></li>
+        {% endif %}
+        <li><a href="{% url 'write' %}">Write</a></li>
+        <li><a href="{% url 'notifications' %}" class="mobile-notification-link">
+            <span class="bell-icon-wrapper">
+              <i class="fa fa-bell"></i>
+              {% if unread_notifications > 0 %}
+                <span class="mobile-badge">{{ unread_notifications }}</span>
+              {% endif %}
+            </span>
+            <span>Notifications</span>
+          </a>
+      </li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout_view' %}">Sign Out</a></li>
+        {% else %}
+          <li><a href="{% url 'login_register' %}">Sign In</a></li>
+        {% endif %}
+      </ul>
+  </div>
+
+  </div>
+
+
+  <div class="main">
+
+    <div class="sec-main">
+        <div class="left">
+    
+        </div>
+        <div class="right">
+            <div class="title">
+                <h1>{{post.title}}</h1>
+                <p>{{post.subtitle}}</p>
+            </div>
+            <div class="user-det">
+                <div class="u-pic">
+                    <a href="{% url 'user_profile' post.author.id %}">
+                      {% if post.author.profile.image %}
+                        <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
+                        {% if post.author.profile.is_member %}
+                          <div class="badge2"><i id="star2" class="fas fa-star"></i></div>
+                        {% endif %}
+                      {% else %}
+                        <img src="{% static 'user_img/default.jpg' %}" alt="No profile">
+                      {% endif %}
+                    </a>
+                </div>
+                <div class="name">
+                  <a href="{% url 'user_profile' post.author.id %}"><p>{{ post.author.username }}</p></a>
+                </div>
+                {% if user.is_authenticated and user != post.author %}
+                <div class="bt">
+                  <form action="{% url 'toggle_follow' post.author.id %}" method="post">
+                    {% csrf_token %}
+                    {% if is_following %}
+                      <button type="submit" class="follow-btn">Unfollow</button>
+                    {% else %}
+                      <button type="submit" class="follow-btn">Follow</button>
+                    {% endif %}
+                  </form>
+                </div>
+                {% endif %}
+
+                <div class="time">
+                  <p>{{ post.create_date|date:"H:i A" }}</p>  
+                </div>
+                <span class="dot">.</span>
+                <div class="date">
+                  <p>{{ post.modify_date|date:"F j, Y" }}</p> 
+                </div>
+
+            </div>
+            <div class="post-pic">
+              <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            </div>
+
+             <div class="like">
+              <form action="{% url 'toggle_like' post.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="insta-like-btn">
+                  {% if user_liked %}
+                    <i class="fa-solid fa-heart liked"></i>
+                  {% else %}
+                    <i class="fa-regular fa-heart"></i>
+                  {% endif %}
+                  <span>{{ post.likes.count }}</span>
+                </button>
+              </form>
+            </div>
+            <div class="subject"> 
+              <div class="short-description">
+                <div class="short-description">
+                  {{ post.description|linebreaks }}
+                </div>
+              </div>
+            </div>
+            
+            <div class="bottom">
+              <div class="ft-1">
+                <a href="{% url 'user_profile' post.author.id %}">
+                  {% if post.author.profile.image %}
+                    <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
+                        {% if post.author.profile.is_member %}
+                          <div class="badge3"><i id="star3" class="fas fa-star"></i></div>
+                        {% endif %}
+                  {% else %}
+                    <img src="{% static 'user_img/default.jpg' %}" alt="No profile">
+                  {% endif %}
+                </a>
+                </div>
+              <div class="sec">
+                <h2>Writeen by {{ post.author.username }}</h2>
+                <div class="info">
+                  <div class="followers">
+                    <p>{{follows}} followers</p>
+                  </div>
+                  <span class="dott">.</span>
+                  <div class="followers">
+                    <p>{{following}} following</p>
+                  </div>
+                </div>
+              </div>
+              {% if user.is_authenticated and user != post.author %}
+              <div class="tr">
+                <form action="{% url 'toggle_follow' post.author.id %}" method="post">
+                  {% csrf_token %}
+                  {% if is_following %}
+                    <button type="submit" class="follow-btn">Unfollow</button>
+                  {% else %}
+                    <button type="submit" class="follow-btn">Follow</button>
+                  {% endif %}
+                </form>
+              </div>
+              {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="third-main">
+        <div class="one"></div>
+        <div class="second">
+
+            <div class="respons">
+              <h4>Responses ({{ post.comments.count }})</h4>
+            </div>
+
+             {% if user.is_authenticated %}
+            <div class="client">
+              <div class="c-pic">
+                {% if my_profile.image %}
+                  <img src="{{ my_profile.image.url }}" alt="{{ user.username }}">
+                {% else %}
+                  <img src="{% static 'user_img/default.png' %}" alt="user-logo">
+                {% endif %}
+
+                {% if my_profile.is_member %}
+                    <div class="badge4"><i id="star4" class="fas fa-star"></i></div>
+                {% endif %}
+
+              </div>
+              <div class="c-name">
+                <span>{{ user.username }}</span>
+              </div>
+            </div>
+
+            <div class="comment-input">
+              <form action="{% url 'add_comment' post.pk %}" method="post">
+                {% csrf_token %}
+                <textarea name="content" placeholder="What are your thoughts?" required></textarea>
+                <div class="comment-submit">
+                  <button type="submit" class="submit-btn">Respond</button>
+                </div>
+              </form>
+            </div>
+            {% else %}
+            <p><a href="{% url 'login_register' %}">Sign in</a> to write a comment.</p>
+            {% endif %}
+
+           {% for comment in comments %}
+            <div class="top1">
+              <div class="pc1">
+                {% if comment.user.profile.image %}
+                  <img src="{{ comment.user.profile.image.url }}" alt="{{ comment.user.username }}">
+                {% else %}
+                  <img src="{% static 'user_img/default.png' %}" alt="User Image">
+                {% endif %}
+
+                {% if comment.user.profile.is_member %}
+                    <div class="badge4"><i id="star4" class="fas fa-star"></i></div>
+                {% endif %}
+
+              </div>
+              <div class="us-name">
+                <span>{{ comment.user.username }}</span>
+                <p>{{ comment.created_at|date:"F j, Y" }}</p>
+              </div>
+            </div>
+
+
+
+            <div class="sec-row">
+              <div class="left-hand">
+                <p>{{ comment.content }}</p>
+              </div>
+            </div>
+            {% empty %}
+            <p>No comments yet.</p>
+            {% endfor %}
+
+        </div> 
+    </div>
+      
+
+</div>
+
+
+<footer>
+
+  <div class="ft">
+    <a href="{% url 'help' %}">Help</a>
+    <a href="{% url 'about' %}">About</a>
+  </div>
+
+</footer>
+
+<script>
+  const profileBtn = document.querySelector('.nav-profile');
+  const dropdown = document.querySelector('.mobile-dropdown');
+
+  profileBtn.addEventListener('click', function (e) {
+    const mobileBreakpoint = 768; 
+
+    if (window.innerWidth <= mobileBreakpoint) {
+      e.preventDefault(); 
+      dropdown.classList.toggle('dropdown-active');
+    } else {
+
+      if (dropdown.classList.contains('dropdown-active')) {
+        dropdown.classList.remove('dropdown-active');
+      }
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    const mobileBreakpoint = 768;
+    if (window.innerWidth <= mobileBreakpoint && !dropdown.contains(e.target) && !profileBtn.contains(e.target)) {
+      dropdown.classList.remove('dropdown-active');
+    }
+  });
+
+
+  window.addEventListener('resize', function() {
+    const mobileBreakpoint = 768;
+    if (window.innerWidth > mobileBreakpoint && dropdown.classList.contains('dropdown-active')) {
+      dropdown.classList.remove('dropdown-active');
+    }
+  });
+</script>
+
+</body>
+
+</html>

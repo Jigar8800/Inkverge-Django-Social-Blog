@@ -1,0 +1,62 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  width: 80%;
+  margin: 50px auto;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+  background: #fff;
+}
+
+.post-card img {
+  width: 100%;
+  height: auto;
+}
+
+.post-card h2 {
+  margin: 10px 15px;
+}
+
+.post-card p {
+  margin: 0 15px 15px;
+  color: #555;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  margin: 0 15px 15px;
+}
+
+.author img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.author i.fa-star {
+  color: gold;
+  margin-left: 5px;
+}

@@ -1,0 +1,368 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+    padding: 10px 20px;
+    top: 0;
+    z-index: 100;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left a {
+      font-size: 24px;
+      color: #6B6B6B;
+      text-decoration: none;
+    }
+
+    .nav-left a {
+      font-size: 14px;
+      color: #6B6B6B;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left a i {
+      padding: 0;
+      font-size: 22px; 
+    }
+
+.payment{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.payment h1{
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.checkout-wrapper { 
+  padding: 32px; 
+  max-width: 420px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  font-family: 'Lora', serif;
+}
+
+.plan-summary {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  line-height: 1.6; 
+  border-bottom: 1px solid #eee;
+}
+
+.plan-image-badge {
+  position: relative;
+}
+
+.plan-image-badge img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.plan-image-badge .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #FFD700;
+  color: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.plan-details {
+  margin-left: 20px;
+}
+
+.plan-details h3 {
+  margin: 0;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #242424;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.plan-details a {
+  font-size: 13px;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.billed-today {
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b6b6b;
+  line-height: 20px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 500;
+  color: #242424;
+  line-height: 20px;
+}
+
+.payment-section {
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.payment-section h3 {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #242424;
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: 550;
+  margin-bottom: 15px;
+}
+
+.payment-section input {
+  width: 93%;
+  padding: 12px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row input {
+  flex: 1;
+}
+
+.pay-btn {
+  width: 100%;
+  background: #007bff;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  background: #0056b3;
+}
+
+/* For screens 320px to 480px (mobile) */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .nav {
+    padding: 8px 10px;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .payment{
+    margin-top: 20px;
+}
+
+  .payment h1 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .checkout-wrapper {
+    padding: 20px;
+    margin: 20px 10px;
+  }
+
+  .plan-image-badge img{
+     width: 50px;
+    height: 50px;
+  }
+
+  .plan-details h3 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .billed-today, .price {
+    font-size: 13px;
+  }
+
+  .payment-section {
+    padding: 20px 20px 20px 0;
+    line-height: 1.6;
+}
+
+  .payment-section h3 {
+    font-size: 15px;
+  }
+
+  .payment-section input {
+    font-size: 13px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .pay-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .payment{
+    margin-top: 20px;
+  }
+
+  .payment h1 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .checkout-wrapper {
+    max-width: 768px;
+    margin: 20px 20px;
+  }
+
+  .plan-details h3 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .billed-today, .price {
+    font-size: 14px;
+  }
+
+   .payment-section {
+    padding: 20px 0px 20px 0;
+    line-height: 1.6;
+}
+
+  .payment-section input {
+    width: 96%;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .pay-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .checkout-wrapper {
+    max-width: 769px;
+    padding: 32px;
+    margin: 20px auto;
+    width: 85%;
+  }
+
+  .payment{
+    margin-top: 20px;
+}
+
+  .payment h1 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .plan-details h3 {
+    font-size: 19px;
+  }
+
+    .payment-section {
+    padding: 20px 0px 20px 0;
+    line-height: 1.6;
+}
+
+  .payment-section input {
+    width: 96%;
+    font-size: 15px;
+  }
+
+  .pay-btn {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .checkout-wrapper {
+    max-width: 1025px;
+    width: 60%;
+  }
+
+  .payment h1 {
+    font-size: 30px;
+  }
+
+   .payment-section {
+    padding: 20px 0px 20px 0;
+    line-height: 1.6;
+}
+
+.payment-section input {
+    width: 96%;
+    font-size: 15px;
+  }
+
+  .plan-details h3 {
+    font-size: 20px;
+  }
+
+  .pay-btn {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'search.css' %}">
+  <title>Search Results - Inkverge</title>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-left">
+      <a href="{% url 'index' %}">
+        <img class="logo" src="{% static 'image/logo-2.png' %}" alt="Inkverge Logo" />
+      </a>
+      <form method="get" action="{% url 'search_posts' %}">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" name="q" placeholder="Search by title" id="search" value="{{ query }}" />
+        </div>
+      </form>
+    </div>
+    <div class="nav-right">
+      <a href="{% url 'write' %}"><i class="fa-solid fa-pen-to-square"></i><span class="wr">Write</span></a>
+      <a href="{% url 'notifications' %}"><i class="fa-regular fa-bell"></i></a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}">Sign Out</a>
+      {% else %}
+        <a href="{% url 'login_register' %}">Sign In</a>
+      {% endif %}
+      <a href="{% url 'profile' %}" class="nav-profile">
+        <div class="profile-badge">
+          {% if my_profile.image %}
+            <img src="{{ my_profile.image.url }}" alt="{{ user.username }}">
+          {% else %}
+            <img src="{% static 'user_img/default.png' %}" alt="No photo">
+          {% endif %}
+          {% if my_profile.is_member %}
+            <div class="badge"><i class="fas fa-star"></i></div>
+          {% endif %}
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="main">
+    <h1>Search Results for "{{ query }}"</h1>
+
+    {% if posts %}
+      <div class="posts-grid">
+        {% for post in posts %}
+          <div class="post-card">
+            <a href="{% url 'post_detail' post.pk %}">
+              <img src="{{ post.image.url }}" alt="{{ post.title }}">
+              <h2>{{ post.title }}</h2>
+              <p>{{ post.subtitle }}</p>
+            </a>
+            <div class="author">
+              <a href="{% url 'user_profile' post.author.id %}">
+                {% if post.author.profile.image %}
+                  <img src="{{ post.author.profile.image.url }}" alt="{{ post.author.username }}">
+                {% else %}
+                  <img src="{% static 'user_img/default.png' %}" alt="No photo">
+                {% endif %}
+                {% if post.author.profile.is_member %}
+                  <i class="fas fa-star"></i>
+                {% endif %}
+                <span>{{ post.author.username }}</span>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No posts found for your search.</p>
+    {% endif %}
+  </div>
+
+  <footer>
+    <div class="ft">
+      <a href="{% url 'help' %}">Help</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="#">Blog</a>
+    </div>
+  </footer>
+</body>
+</html>
