@@ -3,9 +3,4 @@ myenv/
 db.sqlite3
 __pycache__/
 *.pyc
-staticfiles/
-<<<<<<< HEAD
-media/
-=======
-media/
->>>>>>> e68298be4887b2719d960f82c0489601ff0ce195
+
