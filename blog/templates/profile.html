@@ -239,7 +239,7 @@
                       <div class="fan-item">
                         <div class="foll">
                             <a href="{% url 'user_profile' follow.following.id %}">
-                              {% if follow.follower.profile.image %}
+                              {% if follow.following.profile.image %}
                                 <img src="{{ follow.following.profile.image.url }}" alt="{{ follow.following.username }}">
                               {% else %}
                                 <img src="{% static 'user_img/default.png' %}" alt="No photo">
